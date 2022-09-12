@@ -3,10 +3,10 @@ import { Row, Col, Button, Typography } from "antd"
 import firebase, { auth } from "../../firebase/config"
 const { Title } = Typography
 const fbProvider = new firebase.auth.FacebookAuthProvider()
-
+// const ggProvider = new firebase.auth.GoogleAuthProvider()
 export default function Login() {
-    const handleLogin = (provider) => {
-        auth.signInWithPopup(provider)
+    const handleLogin = async (provider) => {
+        await auth.signInWithPopup(provider)
     }
 
 
