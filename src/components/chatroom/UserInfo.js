@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Avatar, Typography } from 'antd'
 import styled from 'styled-components'
+import { auth, db } from '../../firebase/config'
 const WrapperStyled = styled.div`
 display: flex;
 justify-content: space-between;
@@ -12,6 +13,16 @@ border-bottom: 1px solid rgba(82,38,83);
 };
 `;
 export default function UserInfo() {
+    useEffect(() => {
+        db.collection("users").onSnapshot((snapshot) => {
+            const data = snapshot.docs.map(doc => ({
+                ...doc.data(),
+                id: doc.id
+            }))
+            console.log({ data })
+        })
+    }, [])
+
     return (
         <WrapperStyled>
             <div>
@@ -19,7 +30,7 @@ export default function UserInfo() {
                 <Typography.Text className='username'>ABC</Typography.Text>
             </div>
 
-            <Button ghost>Logout</Button>
+            <Button ghost onClick={() => { auth.signOut() }}>Logout</Button>
         </WrapperStyled>
     )
 }

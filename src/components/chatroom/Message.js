@@ -19,7 +19,7 @@ margin-bottom: 10px;
 export default function Message({ text, createdAt, photoUrl, displayName }) {
     return (
         <Wrapstyled>
-            <Avatar src={photoUrl}>A</Avatar>
+            <Avatar size="small" src={photoUrl}>A</Avatar>
             <Typography.Text className='author'>{displayName}</Typography.Text>
             <Typography.Text className='time'>{createdAt}</Typography.Text>
             <div>

@@ -51,7 +51,8 @@ border-radius: 2px;
 }
 `
 const MessageListStyled = styled.div`
-
+max-height: 100%;
+over-flow-y : auto;
 `
 export default function ChatWindow() {
     return (

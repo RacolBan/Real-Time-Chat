@@ -1,12 +1,22 @@
 import React from 'react'
 import { Row, Col, Button, Typography } from "antd"
 import firebase, { auth } from "../../firebase/config"
+import { addDocumentToDatabase } from '../../firebase/service'
 const { Title } = Typography
 const fbProvider = new firebase.auth.FacebookAuthProvider()
 // const ggProvider = new firebase.auth.GoogleAuthProvider()
 export default function Login() {
     const handleLogin = async (provider) => {
-        await auth.signInWithPopup(provider)
+        const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
+        if (additionalUserInfo.isNewUser) {
+            addDocumentToDatabase('users', {
+                uid: user.uid,
+                displayName: user.displayName,
+                photoUrl: user.photoURL,
+                email: user.email,
+                providerId: additionalUserInfo.providerId
+            })
+        }
     }
 
 

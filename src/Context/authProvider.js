@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { auth } from "../firebase/config"
 import { useNavigate } from 'react-router-dom';
 import { Spin } from "antd"
-import { UsergroupAddOutlined } from '@ant-design/icons';
 export const AuthContext = React.createContext();
 
 export default function AuthProvider({ children }) {
@@ -33,7 +32,6 @@ export default function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider value={{ user }}>
-            {console.log(user)}
             {isLoading ? <Spin /> : children}
         </AuthContext.Provider>
     )
