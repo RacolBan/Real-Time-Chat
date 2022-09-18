@@ -6,14 +6,7 @@ const useFirestore = (collection, condition) => {
     const [documents, setDocument] = useState([])
     useEffect(() => {
         let collectionRef = db.collection(collection).orderBy("createdAt")
-        // condition
-        /**
-         * {
-         * fieldName: "abc",
-         * operator: '==',
-         * compareValue: "abc"
-         * }
-         */
+
         if (condition) {
             if (!condition.compareValue || !condition.compareValue.length) {
                 return
