@@ -7,14 +7,14 @@ export const AppContext = createContext();
 export default function AppProvider({ children }) {
     const [isAddRoomVisible, setIsAddRoomVisible] = useState(false)
     const { user: { uid } } = useContext(AuthContext)
-    const roomMemo = useMemo(() => {
+    const roomCondition = useMemo(() => {
         return {
             fieldName: "members",
             operator: "array-contains",
             compareValue: uid
         }
     }, [uid])
-    const rooms = useFirestore('rooms', roomMemo)
+    const rooms = useFirestore('rooms', roomCondition)
     return (
         <AppContext.Provider value={{ rooms, isAddRoomVisible, setIsAddRoomVisible }}>
             {children}

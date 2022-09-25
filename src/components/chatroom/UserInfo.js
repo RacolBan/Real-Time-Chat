@@ -10,7 +10,9 @@ padding: 12px 16px;
 border-bottom: 1px solid rgba(82,38,83);
 .username {
     color: white;
-    margin-left: 5px
+    margin-left: 5px;
+    display:block;
+    font-size: 9px
 };
 `;
 export default function UserInfo() {
@@ -24,10 +26,10 @@ export default function UserInfo() {
         <WrapperStd>
             <div>
                 <Avatar src={photoURL}>{photoURL ? "" : displayName?.charAt(0)?.toUpperCase()}</Avatar>
-                <Typography.Text className='username'>ABC</Typography.Text>
+                <Typography.Text className='username'>{displayName}</Typography.Text>
             </div>
 
-            <Button ghost onClick={() => { auth.signOut() }}>Logout</Button>
+            <Button ghost onClick={() => auth.signOut()}>Logout</Button>
         </WrapperStd>
     )
 }

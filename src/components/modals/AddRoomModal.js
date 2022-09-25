@@ -1,12 +1,11 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { Form, Modal, Input } from 'antd'
 import { AppContext } from '../../Context/appProvider';
 export default function AddRoomModal() {
-    const form = Form.useForm()
+    const [form] = Form.useForm()
     const { isAddRoomVisible, setIsAddRoomVisible } = useContext(AppContext);
     const handleOK = () => {
-        //handle logic
-        console.log({ formdata: form.getFieldsValue() })
+        console.log({ form: form.getFieldValue() })
         setIsAddRoomVisible(false)
     }
     const handleCancel = () => {

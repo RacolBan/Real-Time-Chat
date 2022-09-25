@@ -28,7 +28,7 @@ export default function Login() {
                     <Button style={{ width: '100%', marginBottiom: 5 }}>
                         Sign In With Google
                     </Button>
-                    <Button style={{ width: '100%' }} onClick={() => { handleLogin(fbProvider) }}>
+                    <Button style={{ width: '100%' }} onClick={() => handleLogin(fbProvider)}>
                         Sign In With Facecbook
                     </Button>
                 </Col>

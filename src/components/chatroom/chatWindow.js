@@ -82,10 +82,10 @@ export default function ChatWindow() {
             </HeaderStyled>
             <BodyStyled>
                 <MessageListStyled>
-                    <Message text="test" displayName="Khai" photoUrl={null} createdAt={123456}></Message>
-                    <Message text="test 123" displayName="Linh" photoUrl={null} createdAt={123456}></Message>
-                    <Message text="test 456 " displayName="Phuc" photoUrl={null} createdAt={123456}></Message>
-                    <Message text="test 124564151616" displayName="Khai" photoUrl={null} createdAt={123456}></Message>
+                    <Message text="test" displayName="Khai" photoURL={null} createdAt={123456}></Message>
+                    <Message text="test 123" displayName="Linh" photoURL={null} createdAt={123456}></Message>
+                    <Message text="test 456 " displayName="Phuc" photoURL={null} createdAt={123456}></Message>
+                    <Message text="test 124564151616" displayName="Khai" photoURL={null} createdAt={123456}></Message>
                 </MessageListStyled>
                 <FormStyled>
                     <Form.Item>
