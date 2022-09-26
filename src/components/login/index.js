@@ -2,8 +2,10 @@ import React from 'react'
 import { Row, Col, Button, Typography } from "antd"
 import firebase, { auth } from "../../firebase/config"
 import { addDocumentToDatabase } from '../../firebase/service'
+import { generateKeywords } from "../../firebase/service"
 const { Title } = Typography
 const fbProvider = new firebase.auth.FacebookAuthProvider()
+
 // const ggProvider = new firebase.auth.GoogleAuthProvider()
 export default function Login() {
     const handleLogin = async (provider) => {
@@ -12,9 +14,10 @@ export default function Login() {
             addDocumentToDatabase('users', {
                 uid: user.uid,
                 displayName: user.displayName,
-                photoUrl: user.photoURL,
+                photoURL: user.photoURL,
                 email: user.email,
-                providerId: additionalUserInfo.providerId
+                providerId: additionalUserInfo.providerId,
+                keywords: generateKeywords(user.displayName?.toLowerCase()),
             })
         }
     }

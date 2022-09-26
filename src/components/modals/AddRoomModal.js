@@ -1,15 +1,21 @@
 import { useContext } from 'react'
 import { Form, Modal, Input } from 'antd'
 import { AppContext } from '../../Context/appProvider';
+import { addDocumentToDatabase } from '../../firebase/service';
+import { AuthContext } from '../../Context/authProvider';
 export default function AddRoomModal() {
     const [form] = Form.useForm()
     const { isAddRoomVisible, setIsAddRoomVisible } = useContext(AppContext);
+    const { user: { uid } } = useContext(AuthContext)
     const handleOK = () => {
-        console.log({ form: form.getFieldValue() })
+        addDocumentToDatabase('rooms', { ...form.getFieldsValue(), members: [uid] })
         setIsAddRoomVisible(false)
+        form.resetFields()
     }
     const handleCancel = () => {
         setIsAddRoomVisible(false)
+        form.resetFields()
+
     }
     return (
         <Modal

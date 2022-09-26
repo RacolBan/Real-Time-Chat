@@ -28,21 +28,20 @@ color:white;
 `;
 
 export default function RoomList() {
-    const { rooms, setIsAddRoomVisible } = useContext(AppContext);
-    console.log({ rooms })
-    const handleAddRoom = () => {
-        setIsAddRoomVisible(true)
-    }
-    return (
-        <Collapse ghost defaultActiveKey={['1']}>
-            <PanelStyled header='List Room' key='1'>
-                {rooms.map(room =>
-                    <LinkStyled key={room.id}>{room.name}</LinkStyled>
-                )}
-                <Button type='text' icon={<PlusSquareOutlined />} className='add-room' onClick={handleAddRoom}>Add Room</Button>
-            </PanelStyled>
+  const { rooms, setIsAddRoomVisible, setSelectedRoomId } = useContext(AppContext);
+  const handleAddRoom = () => {
+    setIsAddRoomVisible(true)
+  }
+  return (
+    <Collapse ghost defaultActiveKey={['1']}>
+      <PanelStyled header='List Room' key='1'>
+        {rooms.map(room =>
+          <LinkStyled key={room.id} onClick={() => { setSelectedRoomId(room.id) }}>{room.name}</LinkStyled>
+        )}
+        <Button type='text' icon={<PlusSquareOutlined />} className='add-room' onClick={() => handleAddRoom()}>Add Room</Button>
+      </PanelStyled>
 
-        </Collapse>
-    )
+    </Collapse>
+  )
 }
 
