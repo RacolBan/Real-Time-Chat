@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useMemo } from 'react';
 import { Form, Modal, Select, Spin, Avatar } from 'antd';
 import { AppContext } from '../../Context/appProvider';
 import { debounce } from 'lodash';
@@ -15,7 +15,7 @@ function DebounceSelect({
     const [fetching, setFetching] = useState(false);
     const [options, setOptions] = useState([]);
 
-    const debounceFetcher = React.useMemo(() => {
+    const debounceFetcher = useMemo(() => {
         const loadOptions = (value) => {
             setOptions([]);
             setFetching(true);
@@ -106,7 +106,6 @@ export default function InviteMemberModal() {
 
         setIsInviteMemberVisible(false);
     };
-    console.log({ value })
     return (
         <div>
             <Modal

@@ -17,11 +17,11 @@ export default function AppProvider({ children }) {
         };
     }, [uid])
     const rooms = useFirestore('rooms', roomCondition)
-    const selectedRoom = React.useMemo(
+    const selectedRoom = useMemo(
         () => rooms.find((room) => room.id === selectedRoomId) || {},
         [rooms, selectedRoomId]
     );
-    const usersCondition = React.useMemo(() => {
+    const usersCondition = useMemo(() => {
         return {
             fieldName: 'uid',
             operator: 'in',
